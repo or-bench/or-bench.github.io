@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178132094-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-178132094-1");
+  </script>
+
+  <meta charset="UTF-8" />
+  <!--  <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+  <meta name="viewport" content="width=1024" />
+  <title>OR-Bench: Over Refusal Benchmark</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css" />
+  <script src="https://kit.fontawesome.com/b939870cfb.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.foundation.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.foundation.min.js"></script>
+
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-md">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html"
+          >OR-Bench</a>
+        <button
+          class="navbar-toggler navbar-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="#main-navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#leaderboard">Leaderboards</a>
+            </li>
+            <li>
+              <a class="nav-link" href="https://arxiv.org/abs/2405.20947" target="_blank">Paper</a>
+            </li>
+            <li>
+              <a class="nav-link text-nowrap" href="https://github.com/justincui03/overalign_pipeline"
+                target="_blank">Github</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+  <!-- <hr class="toprule" /> -->
+  <header>
+    <div class="header-block container">
+      <div class="logo"><img src="./images/logo.png" alt="logo" /></div>
+      <div class="title">OR-BENCH</div>
+      <div class="description">
+        An over-refusal benchmark for large language models
+      </div>
+    </div>
+  </header>
+  <!-- <hr class="toprule" /> -->
+
+  <div class="container">
+    <section id="introduction">
+      <div class="overview">
+        <p class="doublealign">
+          <b>Large Language Models (LLMs) </b> require careful safety alignment to prevent malicious outputs. While significant research focuses on mitigating harmful content generation, 
+            the enhanced safety often come with the side effect of over-refusal, where LLMs may reject innocuous prompts and become less helpful.
+            Although the issue of over-refusal has been empirically observed, a systematic measurement is challenging 
+            due to the difficulty of crafting prompts that appear harmful but are benign.<br><br>
+
+            We introduce OR-Bench, the <b>first large-scale over-refusal benchmark</b>. OR-Bench comprises 80,000 seemingly toxic prompts across 10 common rejection categories, a subset of around 1,000 hard prompts that are challenging even for state-of-the-art LLMs, and an additional 600 toxic prompts to prevent indiscriminate responses.
+        </p>
+        <div class="flexbox-container features">
+          <div class="element">
+            <div class="icon">
+              <img src="./images/80k.png" style="width: 50%;"/>
+            </div>
+            <p>
+              OR-Bench-80K
+            </p>
+            <div class="divider">
+              <hr />
+            </div>
+            <div class="description">
+            A comprehensive over-refusal benchmark dataset containing all 80K prompts across 10 categories.
+            </div>
+          </div>
+          <div class="element">
+            <div class="icon">
+              <img src="./images/mirror.png" style="width: 50%;"/>
+            </div>
+            <p>
+              OR-Bench-Hard-1K
+            </p>
+            <div class="divider">
+              <hr />
+            </div>
+            <div class="description">
+            A 1K subset composed of prompts rejected by more than 3 models, which is challening even for SOTA LLMs.
+            </div>
+          </div>
+          <div class="element">
+            <div class="icon">
+              <img src="./images/toxic.png" style="width: 50%;"/>
+            </div>
+            <p>
+              OR-Bench-Toxic
+            </p>
+            <div class="divider">
+              <hr />
+            </div>
+            <div class="description">
+            A complement toxic dataset that should be rejected by LLMs to prevent indiscriminate responses.
+            </div>
+            <!-- <div class="vspace30"></div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="div_cifar10_ipc1_heading">
+      <div class="heading">
+        <!-- <p>
+        Leaderboard
+        </p> -->
+      </div>
+      <div id="div_or_bench"></div>
+    </section>
+
+    <div class="vspace50"></div>
+
+    <div id="new_result" style="width:100%">
+      <a class="btn btn-secondary" style="width:100%" href="https://forms.gle/WEeSVBENFWMXMuYK8" target="_blank">Submit New Results <img src="images/click.png" width="20"/></a>
+    </div>
+
+    <section id="citation" >
+      <div class="heading">
+        <p>Citation</p>
+      </div>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@article</span>{cui2024or,
+  title<span style="color: #333333">=</span>{OR<span style="color: #333333">-</span>Bench: An Over<span style="color: #333333">-</span>Refusal Benchmark <span style="color: #008800; font-weight: bold">for</span> Large Language Models},
+  author<span style="color: #333333">=</span>{Cui, Justin <span style="color: #000000; font-weight: bold">and</span> Chiang, Wei<span style="color: #333333">-</span>Lin <span style="color: #000000; font-weight: bold">and</span> Stoica, Ion <span style="color: #000000; font-weight: bold">and</span> Hsieh, Cho<span style="color: #333333">-</span>Jui},
+  journal<span style="color: #333333">=</span>{arXiv preprint arXiv:<span style="color: #6600EE; font-weight: bold">2405.20947</span>},
+  year<span style="color: #333333">=</span>{<span style="color: #0000DD; font-weight: bold">2024</span>}
+}
+</pre></div>
+
+
+    </section>
+
+    <div class="vspace50"></div>
+
+  </div>
+
+  <hr class="bottomrule" />
+
+  <footer>
+    <small>&copy; 2024, OR-Bench
+  </footer>
+
+  <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () {
+      myFunction();
+    };
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script>
+  <script>
+    $("#div_or_bench").load("./data/or-bench.html", function() {
+      $('#or-bench-table').DataTable({
+            "pageLength": 25,  // Set the initial number of entries
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],  // Set options for lengthMenu
+            "order": [[4, "asc"]]  // Sort by the third column (index 2) in descending order
+        });
+    });
+  </script>
+</body>
