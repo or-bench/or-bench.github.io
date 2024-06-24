@@ -18,6 +18,7 @@
   <meta name="viewport" content="width=1024" />
   <title>OR-Bench: Over Refusal Benchmark</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -59,7 +60,7 @@
               <a class="nav-link" href="https://arxiv.org/abs/2405.20947" target="_blank">Paper</a>
             </li>
             <li>
-              <a class="nav-link text-nowrap" href="https://github.com/justincui03/overalign_pipeline"
+              <a class="nav-link text-nowrap" href="https://github.com/justincui03/or-bench"
                 target="_blank">Github</a>
             </li>
           </ul>
@@ -91,7 +92,7 @@
 
             We introduce OR-Bench, the <b>first large-scale over-refusal benchmark</b>. OR-Bench comprises 80,000 seemingly toxic prompts across 10 common rejection categories, a subset of around 1,000 hard prompts that are challenging even for state-of-the-art LLMs, and an additional 600 toxic prompts to prevent indiscriminate responses.
         </p>
-        <div class="flexbox-container features">
+        <!-- <div class="flexbox-container features">
           <div class="element">
             <div class="icon">
               <img src="./images/80k.png" style="width: 50%;"/>
@@ -134,10 +135,15 @@
             A complement toxic dataset that should be rejected by LLMs to prevent indiscriminate responses.
             </div>
             <!-- <div class="vspace30"></div> -->
-          </div>
-        </div>
+            
+          <!-- </div> -->
+        <!-- </div> -->
+        We plot the evaluation results in the following figure. The x-axis is the rejection rate on seemingly toxic prompts and the y-axis is the rejection rate on real toxic prompts. In the ideal case, the model should be on the top-left corner where the model rejects the most number of toixc prompts and the least number of seemingly toxic prompts.
+        <div style="margin-top:20px"><img src="./images/overall_x_y_plot.png" style="width: 100%;"/></div>
       </div>
     </section>
+
+    <div class="divider"><hr /></div>
 
     <section class="container" id="div_cifar10_ipc1_heading">
       <div class="heading">
@@ -147,6 +153,16 @@
       </div>
       <div id="div_or_bench"></div>
     </section>
+
+    <div class="divider"><hr /></div>
+    <script
+    type="module"
+    src="https://gradio.s3-us-west-2.amazonaws.com/4.31.0/gradio.js"
+  ></script>
+  
+  <div><b>Please try out our demos below 🚀</b></div>
+  <gradio-app src="https://bench-llms-or-bench.hf.space" theme_mode="light"></gradio-app>
+  
 
     <div class="vspace50"></div>
 
@@ -202,7 +218,7 @@
       $('#or-bench-table').DataTable({
             "pageLength": 25,  // Set the initial number of entries
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],  // Set options for lengthMenu
-            "order": [[4, "asc"]]  // Sort by the third column (index 2) in descending order
+            "order": [[3, "asc"]]  // Sort by the third column (index 2) in descending order
         });
     });
   </script>
