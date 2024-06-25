@@ -105,11 +105,11 @@ footer {
   grid-row-gap: 10px;
 }
 
-.logo {
+.title-logo {
   text-align: right;
   /*margin-right: 10px;*/
 }
-.logo img {
+.title-logo img {
   width: 80px;
 }
 .title {
